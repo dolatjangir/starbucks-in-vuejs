@@ -9,6 +9,7 @@
                 <button class="rewards-button">REWARD</button>
                 <button class="text-red-700">GIFT CARDS</button>
             </div>
+            
             <div class="right">
                 <button><i class="fa-solid fa-location-dot"></i> Find Store</button>
                 <button class="sign-in">Sign In</button>
