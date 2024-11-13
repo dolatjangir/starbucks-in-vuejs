@@ -1,13 +1,13 @@
 <template>
 <div class="outer-container">
 
-    <div class="inner-container">
+    <div class="inner-container ">
         <div class="header">
             <div class="left">
                 <img class="starbucks-img" src="https://www.starbucks.in/assets/icon/logo.png" />
                 <button class="menu-button">MENU</button>
                 <button class="rewards-button">REWARD</button>
-                <button>GIFT CARDS</button>
+                <button class="text-red-700">GIFT CARDS</button>
             </div>
             <div class="right">
                 <button><i class="fa-solid fa-location-dot"></i> Find Store</button>
@@ -28,7 +28,7 @@
                         join in the app</a> for the best experience</span>
             </div>
             <div class="star-img">
-                <img src="../assets/starbucks-img.png" alt="star-img" />
+                <img class="star-img-inner-img" src="../assets/starbucks-img.png" alt="star-img" />
             </div>
         </div>
         <div class="page-2">
@@ -193,14 +193,15 @@ export default {
 .header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: #fff;
+    padding: 0px 20px;
     height: 80px;
 
 }
 
-.left {
+.left, .right{
     display: flex;
-    justify-content: space-between;
     align-items: center;
     gap: 10px;
 }
@@ -209,39 +210,72 @@ export default {
     height: 77px;
     border-bottom: 5px solid #008248;
 }
-.right {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-}
-
 .join-now {
-    border: 1px solid black;
+    
     border-radius: 20px;
     background-color: black;
     color: white;
-    width: 86px;
+    font-size: 0.9rem;
+        padding: 12px 12px;
 }
 .sign-in{
     border: 1px solid black;
     border-radius: 19px;
-    width: 79px;
+    font-size: 0.9rem;
+    padding: 12px 14px;
 }
+@media (max-width: 768px) {
+    .header {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    .left, .right {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .starbucks-img {
+        width: 40px;
+    }
+    .right button {
+        font-size: 0.8rem;
+        padding: 6px 8px;
+    }
+}
+@media (max-width: 600px) {
+    /* Mobile menu toggle */
+    .menu-button, .rewards-button, .text-red-700 {
+        display: none; /* Hide main menu options on mobile */
+    }
+
+    .header {
+        justify-content: space-between;
+    }
+
+    /* Optional hamburger icon for mobile */
+    .hamburger {
+        display: block;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    /* Mobile-specific adjustments */
+    .sign-in, .join-now {
+        padding: 4px 8px;
+        font-size: 0.8rem;
+    }
+}
+
 .starbucks-img {
     width: 53px;
-    height: 42px;
-    position: relative;
-    left: 20px;
+    height: auto;
 
 }
 
 button {
-    width: 120px;
-    height: 30px;
-    font-size: unset;
-    border: none;
-    background-color: transparent;
+   font-size: 1rem;
+    padding: 8px 12px;
+    background: transparent;
+    border: none
 }
 
 .lower-header {
@@ -268,36 +302,81 @@ button {
     font-weight: 500;
 
 }
-
-.photo-page-text {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    left: 50px;
-    gap: 20px;
-    font-family: sans-serif;
-}
+/* hellllppppppppppp-------------- */
 
 .photo-page {
     display: flex;
-    flex-direction: row;
+    flex-direction: row; /* Horizontal layout for larger screens */
     background-color: #d4e9e2;
+    padding: 20px;
+    gap: 20px;
+}
+
+.photo-page-text {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
 }
 
 .star-img {
-    position: relative;
-    right: 28%;
-
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-img {
-    position: relative;
-    width: 187%;
-    height: 100%;
+.star-img-inner-img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
 }
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .photo-page {
+        flex-direction: row; /* Stack text and image vertically */
+        align-items: center;
+    }
+    
+    .photo-page-text, .star-img {
+        width: 100%; /* Full width on smaller screens */
+    }
+
+    .photo-page-text h2 {
+        font-size: 1.8rem; /* Adjust heading size for smaller screens */
+    }
+
+    .photo-page-text p {
+        font-size: 1rem;
+    }
+
+    .joinbutton {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+
+    .star-img-inner-img {
+        max-width: 400px; /* Scale down the max width */
+    }
+}
+
+@media (max-width: 600px) {
+    .photo-page-text h2 {
+        font-size: 1.5rem;
+    }
+
+    .joinbutton {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+
+    .star-img-inner-img {
+        max-width: 300px;
+    }
+}
+
 
 .joinbutton {
     word-spacing: 7px;
@@ -334,7 +413,20 @@ a {
 }
 
 .virtical-div {
-    display: flex;
+    display: grid ;
+    grid-template-columns: repeat(3,1fr);
+}
+@media (max-width:600px) {
+    .virtical-div{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media (max-width:470px) {
+    .virtical-div{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+    }
 }
 
 .card-img {
@@ -368,13 +460,13 @@ p {
     font-family: inherit;
 }
 
-.buttonswithstar {
-
-    height: 40px;
+.buttonswithstar{
+    height: auto;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .buttonnumber {
@@ -421,11 +513,31 @@ p {
 }
 
 .page-5-footer {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
     padding-bottom: 100px;
 }
 
+
+@media(max-width:600px){
+.page-5-footer {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    
+}
+}
+@media(max-width:400px){
+.page-5-footer {
+    display: grid;
+    grid-template-columns: repeat(1,1fr);   
+}
+.page-5-cards{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+}
 .page-5-hteg {
     margin: 10px;
 }
@@ -435,8 +547,9 @@ p {
 }
 
 .page-6-img {
-    width: 22%;
-    /* height: 50%; */
+    max-width: 40%;
+    height: auto;
+    border-radius: 10px;
 }
 
 .page-6-header {
@@ -452,10 +565,24 @@ p {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    /* justify-content: space-between;
-    align-items: center; */
+    
 }
 
+@media (max-width:600px) {
+   .page-6-footer {
+     display: grid;
+     grid-template-columns: repeat(2,1fr);
+     padding: 0px 40px;
+   } 
+}
+@media (max-width:400px) {
+   .page-6-footer {
+     display: grid;
+     grid-template-columns: repeat(1,1fr);
+     padding: 0px 10px;
+     
+   } 
+}
 .page-6-card-1 {
     font-size: small;
     padding-right: 70px;
